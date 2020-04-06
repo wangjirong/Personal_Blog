@@ -4,8 +4,9 @@ import router from './router'
 import store from './store'
 
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import './default.css'
+//公共样式
+import './default.less'
+import '../src/style_less/header_footer.less'
 
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'

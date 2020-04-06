@@ -1,5 +1,5 @@
 <template>
-  <div class="replyTextarea flex-column-start">
+  <div id="replyTextarea" class="flex-column-start">
     <textarea name id :placeholder="`回复 ${ReplyObj.toUserName}`" v-model="newReply.text"></textarea>
     <button @click="senReply">回复</button>
   </div>
@@ -50,7 +50,6 @@ export default {
           if (res.data) Message.success("评论回复成功");
         }
       }
-
       this.reload();
     }
   },
@@ -65,7 +64,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.replyTextarea {
+#replyTextarea {
   margin-left: 2em;
   textarea {
     height: 5em;
@@ -81,7 +80,6 @@ export default {
     border-radius: 5px;
     &:hover {
       outline: none;
-      cursor: pointer;
       background-color: lime;
     }
   }

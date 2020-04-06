@@ -9,8 +9,8 @@
         <span class="replyText">{{Reply.text}}</span>
       </div>
       <div class="time">
-        <span class="yearMonDay">{{Reply.yearMonDay}}</span>
-        <span class="detailSeconds">{{Reply.detailSenonds}}</span>
+        <span class="yearMonDay">{{Reply.fullDateLike_}}</span>
+        <span class="detailSeconds">{{Reply.JustTime}}</span>
         <span class="replyBtn" v-show="!isreply" @click="reply">回复</span>
         <span class="replyBtn" v-show="isreply" @click="outReply">收起</span>
       </div>

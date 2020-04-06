@@ -6,8 +6,8 @@
         <div class="userName">{{comment.userName}}</div>
         <div class="commentText">{{comment.text}}</div>
         <div class="time">
-          <span class="year">{{comment.yearMonDay}}</span>
-          <span class="seconds">{{comment.detailSeconds}}</span>
+          <span class="year">{{comment.fullDateLike_}}</span>
+          <span class="seconds">{{comment.JustTime}}</span>
           <span class="reply" v-show="isReply" @click="reply">回复</span>
           <span class="reply" v-show="!isReply" @click="outReply">收起</span>
         </div>
@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import { getYearMonDay, getDetailTime } from "../getLocaltionBrowser";
+import { handleList } from "../publicFunction";
 export default {
   data() {
     return {
       textareaShow: false,
       isReply: true,
-      replys: [],
+      replys: handleList(this.comment.replys),
       ReplyObj: {
         type: "CommentReply",
         parentId: this.comment._id,
@@ -64,14 +64,6 @@ export default {
   components: {
     CommentReply: () => import("../components/Comment_Reply"),
     ReplyTextarea: () => import("../components/reply_Textarea")
-  },
-  created() {
-    const com = this.comment.replys;
-    com.forEach(reply => {
-      reply.yearMonDay = getYearMonDay(reply.date);
-      reply.detailSenonds = getDetailTime(reply.date);
-    });
-    this.replys = com;
   }
 };
 </script>

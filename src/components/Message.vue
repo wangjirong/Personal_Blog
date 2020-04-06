@@ -1,5 +1,5 @@
 <template>
-  <div class="message flex-column-start">
+  <div id="message" class="flex-column-start">
     <div class="messageParent flex-vertical-start">
       <img :src="Message.userAvatar" alt class="leftavatar" height="50" width="50" />
       <div class="rightText .flex-column-start">
@@ -11,8 +11,8 @@
         <div class="bottom">
           <i class="el-icon-place"></i>
           <div class="adress">{{Message.adress}}</div>
-          <span class="yearMonDay">{{Message.yearMonDay}}</span>
-          <span class="detailSeconds">{{Message.detailSeconds}}</span>
+          <span class="yearMonDay">{{Message.fullDateLike_}}</span>
+          <span class="detailSeconds">{{Message.JustTime}}</span>
           <div class="reply" @click="reply" v-show="isReply">回复</div>
           <div class="reply" @click="outReply" v-show="!isReply">收起</div>
         </div>
@@ -32,10 +32,11 @@
 </template>
 
 <script>
+import { handleList } from "../publicFunction";
 export default {
   data() {
     return {
-      MessageReplys: this.Message.replys,
+      MessageReplys: handleList(this.Message.replys),
       isShowTextArea: false,
       isReply: true,
       ReplyObj: {
@@ -77,7 +78,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.message {
+#message {
   width: 80vw;
   margin: 0 auto;
   background: rgba(255, 255, 255, 1);

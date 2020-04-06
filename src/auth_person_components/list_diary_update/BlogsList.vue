@@ -1,5 +1,5 @@
 <template>
-  <div class="blogsList flex-column">
+  <div id="blogsList" class="flex-column">
     <el-table
       :data="blogList.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()) || data.state.toLowerCase().includes(search.toLowerCase()) || data.classification.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
@@ -12,7 +12,7 @@
         </template>
       </el-table-column>
       <el-table-column type="selection" width="70"></el-table-column>
-      <el-table-column prop="fullDate" label="日期" sortable width="150" column-key="date"></el-table-column>
+      <el-table-column prop="fullDateLikeWord" label="日期" sortable width="150" column-key="date"></el-table-column>
       <el-table-column label="标题" prop="title" width="255"></el-table-column>
       <el-table-column label="作者" prop="author" width="150"></el-table-column>
       <el-table-column label="分类" prop="classification" width="150"></el-table-column>
@@ -32,6 +32,7 @@
 
 <script>
 import { Message } from "element-ui";
+import { handleList } from "../../publicFunction";
 export default {
   inject: ["reload"],
   data() {
@@ -45,19 +46,14 @@ export default {
     handleEdit(index, row) {
       console.log(index, row);
     },
-    handleDelete(index, row) {
-      let blog = row;
-      this.$axios
-        .delete("/api/blog/deleteBlog", { data: { _id: blog._id } })
-        .then(res => {
-          if (res.data) {
-            Message.success("删除成功");
-            this.reload();
-          }
-        })
-        .catch(error => {
-          throw error;
-        });
+    async handleDelete(index, row) {
+      const res = await this.$axios.delete("/api/blog/deleteBlog", {
+        data: { _id: row._id }
+      });
+      if (res.data) {
+        Message.success("删除成功");
+        this.reload();
+      }
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
@@ -65,38 +61,19 @@ export default {
     goToAddBlog() {
       this.$router.push("/auth_personal/addBlog");
     },
-    getAllBlogs() {
-      this.$axios
-        .get("/api/blog/allBlog")
-        .then(res => {
-          this.blogList = res.data;
-          this.blogList.forEach(blog => {
-            let date = new Date(blog.date);
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let day = date.getDate();
-            year = year > 9 ? year : `0${year}`;
-            month = month > 9 ? month : `0${month}`;
-            day = day > 9 ? day : `0${day}`;
-            blog.date = day;
-            blog.yearMonth = year + "年 " + month + "月";
-            blog.fullDate = blog.yearMonth + blog.date + "日";
-            blog.author = "Eric";
-          });
-        })
-        .catch(error => {
-          throw error;
-        });
+    async getAllBlogs() {
+      const res = await this.$axios.get("/api/blog/allBlog");
+      this.blogList = handleList(res.data.allBlogs);
     }
   },
-  created() {
-    this.getAllBlogs();
+  async created() {
+    await this.getAllBlogs();
   }
 };
 </script>
 
 <style lang="less" scoped>
-.blogList {
+#blogList {
   height: 100%;
   width: 70vw;
   padding-right: 5vw;

@@ -1,5 +1,5 @@
 <template>
-  <div class="manager">
+  <div id="manager" class="background cover-size">
     <div class="leftnav flex-column">
       <div class="manager-info flex-column">
         <img src="../assets/img/avatar/avatar2.jpg" alt />
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 export default {
   data() {
     return {
@@ -34,20 +35,15 @@ export default {
     outLogin() {
       sessionStorage.removeItem("eleToken");
       this.$store.dispatch("setManager", null);
+      Message.success("返回登录页面");
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-.manager {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background: url("../assets/manage/manage_bg.jpg") no-repeat fixed;
-  background-size: cover;
-  background-position: center center;
-  // position: relative;
+#manager {
+  background: url("../assets/manage/manage_bg.jpg");
   .leftnav {
     width: 15vw;
     height: 100vh;
@@ -93,7 +89,6 @@ export default {
         background-color: limegreen;
         border-radius: 5px;
         &:hover {
-          cursor: pointer;
           background-color: maroon;
         }
       }
@@ -103,7 +98,7 @@ export default {
     width: 80vw;
     margin-left: 20vw;
     border-radius: 10px;
-    opacity: .8;
+    opacity: 0.8;
     margin-top: 10vh;
   }
 }

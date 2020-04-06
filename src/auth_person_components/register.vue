@@ -1,6 +1,6 @@
 <template>
-  <div id="regist">
-    <ul class="container">
+  <div id="regist" class="background-fix">
+    <ul class="container flex-just-column">
       <li>
         <input type="text" placeholder="请输入用户名" v-model="manager.userName" />
       </li>
@@ -57,7 +57,7 @@ export default {
     };
   },
   methods: {
-    getVerificationCode() {
+    async getVerificationCode() {
       if (!this.manager.email) Message.warning("邮箱不能为空！");
       else {
         const regx = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
@@ -73,49 +73,35 @@ export default {
               console.log("到0了");
             }
           }, 1000);
-          this.$axios
-            .post("/api/manager/email", { email: this.manager.email })
-            .then(res => {
-              this.authVerificationCode = res.data;
-              console.log(res.data);
-            })
-            .catch(error => {
-              Message.error(error.message);
-            });
+          const res = await this.$axios.post("/api/manager/email", {
+            email: this.manager.email
+          });
+          this.authVerificationCode = res.data;
         } else Message.error("邮箱格式不合法！");
       }
     },
-    register() {
+    async register() {
       if (!this.manager.userName) Message.warning("用户名不能为空！");
       if (!this.manager.password) Message.warning("密码不能为空！");
       if (!this.manager.email) Message.warning("邮箱不能为空！");
       if (!this.manager.cellphone) Message.warning("手机电话不能为空！");
       if (!this.manager.invitationCode) Message.warning("邀请码不能为空！");
-      if (this.manager.password != this.pwd2) Message.error("两次输入密码不一致");
+      if (this.manager.password != this.pwd2)
+        Message.error("两次输入密码不一致");
       else if (this.authVerificationCode != this.verificationCode)
         Message.error("验证码不正确");
       else {
-        this.$axios
-          .post("/api/manager/register", this.manager)
-          .then(res => {
-            //邀请码错误
-            if (res.status === 222) Message.error("邀请码错误");
-            else {
-              Message.success("注册成功");
-              let sec = 5;
-              let timer = setInterval(() => {
-                Message.success(`${sec--}后跳转到登录界面！`);
-                if (sec === 0) {
-                  clearInterval(timer)
-                  this.$router.push("/auth_personal/login");
-                }
-              }, 1000);
-            }
-            jiq;
-          })
-          .catch(error => {
-            Message.error(error.message);
-          });
+        const res = await this.$axios.post(
+          "/api/manager/register",
+          this.manager
+        );
+        //邀请码错误
+        if (res.status === 222) Message.error("邀请码错误");
+        else {
+          Message.success("注册成功");
+          Message.success("正在跳转到登录页面");
+          this.$router.push("/auth_personal/login");
+        }
       }
     }
   }
@@ -123,17 +109,10 @@ export default {
 </script>
 <style lang="less" scoped>
 #regist {
-  height: 100vh;
-  width: 100vw;
-  background: url("../assets/manage/register_bg.jpg") no-repeat fixed center
-    center;
-  background-size: 100% 100%;
-  position: fixed;
+  background: url("../assets/manage/register_bg.jpg");
   ul.container {
     width: 30%;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;
+    margin: 1.5rem auto;
     opacity: 0.7;
     li {
       margin-bottom: 0.15rem;
@@ -152,7 +131,6 @@ export default {
         color: #fff;
         &:hover {
           background-color: lime;
-          cursor: pointer;
         }
       }
       .register {
@@ -164,7 +142,6 @@ export default {
         color: #fff;
         &:hover {
           background-color: lightpink;
-          cursor: pointer;
         }
       }
     }

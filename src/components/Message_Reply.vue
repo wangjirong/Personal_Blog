@@ -1,5 +1,5 @@
 <template>
-  <div class="MessageReply flex-vertical-start">
+  <div id="MessageReply" class="flex-vertical-start">
     <img :src="MessageReply.fromUserAvatar" alt class="avatar" height="40" width="40" />
     <div class="rightReply">
       <div class="header">
@@ -12,8 +12,8 @@
         <i class="el-icon-place"></i>
         <span class="adress">{{MessageReply.adress}}</span>
         <span class="browerType">{{MessageReply.browser}}</span>
-        <span class="yearMonDay">{{MessageReply.yearMonDay}}</span>
-        <span class="detailSeconds">{{MessageReply.detailSeconds}}</span>
+        <span class="yearMonDay">{{MessageReply.fullDateLike_}}</span>
+        <span class="detailSeconds">{{MessageReply.JustTime}}</span>
         <span class="reply" v-show="!isShowTextArea" @click="reply">回复</span>
         <span class="reply" v-show="isShowTextArea" @click="outReply">收起</span>
       </div>
@@ -38,21 +38,20 @@ export default {
     reply() {
       this.isShowTextArea = true;
       this.$emit("isShowMessageBoard", this.isShowTextArea);
-      this.$emit("sendToUserId",this.MessageReply.fromUserId)
+      this.$emit("sendToUserId", this.MessageReply.fromUserId);
     },
     outReply() {
       this.isShowTextArea = false;
       this.$emit("isShowMessageBoard", this.isShowTextArea);
     }
   },
-  created(){
+  created() {
     console.log(this.MessageReply);
-    
   }
 };
 </script>
 <style lang="less" scoped>
-.MessageReply {
+#MessageReply {
   margin: 0.5em 0;
   margin-left: 3em;
   .rightReply {

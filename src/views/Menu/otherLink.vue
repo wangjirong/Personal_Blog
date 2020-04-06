@@ -1,21 +1,19 @@
 <template>
-  <div id="otherLink">
-    <div class="centerLinks">
-      <ul>
-        <li v-for="(item,index) in linkList" :key="index">
-          <h5>{{item.title}}</h5>
-          <div class="links">
-            <a v-for="(link,i) in item.link" :key="i" :href="link.href">{{link.name}}</a>
-          </div>
-        </li>
-        <baidu-map
-          style="height:300px;width:100%;backgroundColor:#ccc"
-          :center="center"
-          :zoom="zoom"
-          @ready="handler"
-        ></baidu-map>
-      </ul>
-    </div>
+  <div id="otherLink" class="background">
+    <ul>
+      <li v-for="(item,index) in linkList" :key="index">
+        <h5>{{item.title}}</h5>
+        <div class="links flex-vertical-start-wrap">
+          <a v-for="(link,i) in item.link" :key="i" :href="link.href">{{link.name}}</a>
+        </div>
+      </li>
+      <baidu-map
+        style="height:300px;width:100%;backgroundColor:#ccc"
+        :center="center"
+        :zoom="zoom"
+        @ready="handler"
+      ></baidu-map>
+    </ul>
   </div>
 </template>
 
@@ -197,49 +195,42 @@ export default {
 
 <style lang="less" scoped>
 #otherLink {
-  .centerLinks {
-    overflow-x: hidden;
-    background-image: url("../../assets/img/otherLink.bg1.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-position: center center;
-    width: 100vw;
-    ul {
-      width: 80%;
-      margin: 2em 10%;
-      //   background-color: snow;
-      padding: 0.15rem 0.1rem;
-      //   opacity: .8;
-      li {
-        margin-bottom: 0.2rem;
-        h5 {
-          padding-left: 0.1rem;
-          border-left: springgreen 4px solid;
-          font-size: 0.3rem;
-          color: pink;
-          margin-bottom: 0.1rem;
-          font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-        }
-        div {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: flex-start;
-          a {
-            display: block;
-            width: 2rem;
-            height: 1.2rem;
-            text-align: center;
-            line-height: 1.2rem;
-            font-size: 0.15rem;
-            border-radius: 5px;
-            margin: 0.15rem 0.25rem;
-            background: rgba(255, 255, 255, .8);
-            color: #444;
-            &:hover {
-              background-color: limegreen;
-              color: #fff;
-            }
+  background-image: url("../../assets/img/otherLink.bg1.jpg");
+  width: 100vw;
+  ul {
+    width: 80%;
+    margin: 2em 10%;
+    //   background-color: snow;
+    padding: 0.15rem 0.1rem;
+    //   opacity: .8;
+    li {
+      margin-bottom: 0.2rem;
+      h5 {
+        padding-left: 0.1rem;
+        border-left: springgreen 4px solid;
+        font-size: 0.3rem;
+        color: pink;
+        margin-bottom: 0.1rem;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      div.links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        a {
+          display: block;
+          width: 2rem;
+          height: 1.2rem;
+          text-align: center;
+          line-height: 1.2rem;
+          font-size: 0.15rem;
+          border-radius: 5px;
+          margin: 0.15rem 0.25rem;
+          background: rgba(255, 255, 255, 0.8);
+          color: #444;
+          &:hover {
+            background-color: limegreen;
+            color: #fff;
           }
         }
       }
@@ -248,25 +239,22 @@ export default {
 }
 @media screen and (max-width: 500px) {
   #otherLink {
-    .centerLinks {
-      background: url("../../assets/img/mobile/mobile_bg5.jpg") no-repeat fixed center center;
-      background-size: 100% 100%;
-      ul{
-        width: 90%;
-        margin: 1rem auto;
-        padding: .5em 1em;
-        li{
-          h5{
-            font-size: .16rem;
-          }
-          div{
-            a{
-              height: .5rem;
-              width: .7rem;
-              line-height: .5rem;
-              margin: 1em;
-              font-size: .14rem;
-            }
+    background: url("../../assets/img/mobile/mobile_bg5.jpg");
+    ul {
+      width: 90%;
+      margin: 1rem auto;
+      padding: 0.5em 1em;
+      li {
+        h5 {
+          font-size: 0.16rem;
+        }
+        div {
+          a {
+            height: 0.5rem;
+            width: 0.7rem;
+            line-height: 0.5rem;
+            margin: 1em;
+            font-size: 0.14rem;
           }
         }
       }

@@ -10,7 +10,7 @@
       @save="saveBlog"
     />
     <el-dialog :visible.sync="isshowDialogDetail" id="detail">
-      <div class="addstate">
+      <div class="addstate flex-column">
         <input type="text" name id="title" placeholder="请输入标题" v-model="newBlog.title" />
         <input type="text" name id="state" placeholder="请输入概述" v-model="newBlog.state" />
         <input type="text" name id="state" placeholder="请输入所属分类" v-model="newBlog.classification" />
@@ -134,10 +134,6 @@ export default {
   #detail {
     .el-dialog {
       .addstate {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         #title,
         #state {
           padding: 0.1rem;
@@ -159,7 +155,6 @@ export default {
           border: 1px solid #fff;
           margin: 0.2rem 0 0.1rem;
           &:hover {
-            cursor: pointer;
             background-color: lime;
           }
         }

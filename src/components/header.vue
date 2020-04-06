@@ -1,27 +1,13 @@
 <template>
   <div id="elHeader">
-    <ul class="navbar">
-      <li>
-        <router-link to="/">首页</router-link>
-      </li>
-      <li>
-        <router-link to="/menu/blogs">博客</router-link>
-      </li>
-      <li>
-        <router-link to="/menu/leaveMessage">留言</router-link>
-      </li>
-      <li>
-        <router-link to="/menu/diary">日记</router-link>
-      </li>
-      <li>
-        <router-link to="/menu/about">关于</router-link>
-      </li>
-      <li>
-        <router-link to="/menu/otherLink">链接</router-link>
+    <ul class="navbar flex-vertical">
+      <li v-for="item in Menu" :key="item.id" class="flex-vertical">
+        <router-link :to="item.href">{{item.title}}</router-link>
       </li>
     </ul>
     <div class="qq">
       <img
+        class="avatar"
         src="../assets/img/qq.png"
         alt
         width="30"
@@ -30,6 +16,7 @@
         v-show="!isLogin"
       />
       <img
+        class="avatar"
         :src="user.avatar"
         alt="头像"
         :title="user.userName"
@@ -54,6 +41,32 @@ export default {
   data() {
     return {
       isLogin: false,
+      Menu: [
+        {
+          title: "首页",
+          href: "/"
+        },
+        {
+          title: "博客",
+          href: "/menu/blogs"
+        },
+        {
+          title: "留言",
+          href: "/menu/leaveMessage"
+        },
+        {
+          title: "日记",
+          href: "/menu/diary"
+        },
+        {
+          title: "关于",
+          href: "/menu/about"
+        },
+        {
+          title: "链接",
+          href: "/menu/otherLink"
+        }
+      ],
       user: {
         userName: "",
         avatar: require("../assets/img/avatar/avatar2.jpg")
@@ -106,98 +119,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less" scoped>
-#elHeader {
-  display: flex;
-  align-items: center;
-  // justify-content: center;
-  background-color: #484348;
-  background: rgba(48, 43, 48, .95);
-  // position: fixed;
-  width: 100vw;
-  .logo {
-    font-size: 0.2rem;
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    margin-top: -0.1rem;
-    left: 10%;
-    font-family: "Helvetica Neue";
-  }
-  ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // margin: 0 1rem 0 3.3rem;
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      a {
-        font-size: 0.16rem;
-        padding: 0.2rem 0.32rem;
-        color: #fff;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        &:hover {
-          background-color: limegreen;
-          color: darkred;
-        }
-        &:active {
-          background-color: limegreen;
-        }
-      }
-    }
-  }
-  .qq {
-    position: absolute;
-    right: 10em;
-    z-index: 10;
-    opacity: 1;
-    img {
-      border-radius: 50%;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-  .githubLink {
-    position: absolute;
-    right: 3em;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-@media only screen and (max-width: 500px) {
-  #elHeader {
-    align-items: flex-start;
-    .logo {
-      display: none;
-    }
-    ul {
-      width: 85%;
-      margin-left: 0;
-      li {
-        flex: 1;
-        a {
-          width: 100%;
-          display: block;
-          font-size: 0.1rem;
-        }
-      }
-    }
-    .qq {
-      right: 0.75em;
-      top: 1.2em;
-      img {
-        height: 2em;
-        width: 2em;
-      }
-    }
-    .githubLink {
-      display: none;
-    }
-  }
-}
-</style>

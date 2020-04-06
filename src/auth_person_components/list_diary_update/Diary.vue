@@ -1,5 +1,5 @@
 <template>
-  <div class="diary">
+  <div id="diary">
     <el-table
       :data="diaryList.filter(data => !search || data.text.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
@@ -11,7 +11,7 @@
         </template>
       </el-table-column>
       <el-table-column type="selection" width="80"></el-table-column>
-      <el-table-column prop="date" label="日期" sortable width="200" column-key="date"></el-table-column>
+      <el-table-column prop="fullDateLike_" label="日期" sortable width="200" column-key="date"></el-table-column>
       <el-table-column label="Title" prop="text" width="600"></el-table-column>
       <el-table-column>
         <template slot-scope="scope">
@@ -24,40 +24,26 @@
 </template>
 
 <script>
+import { handleList } from "../../publicFunction";
 export default {
   data() {
     return {
       multipleSelection: [],
       diaryList: [],
-      search:''
+      search: ""
     };
   },
   methods: {
     goToAddDiary() {
       this.$router.push("/auth_personal/writeDiary");
     },
-    getAllDiary() {
-      this.$axios
-        .get("/api/diary/getAllDiary")
-        .then(res => {
-          this.diaryList = res.data;
-          this.diaryList.forEach(diary => {
-            let time = new Date(diary.date);
-            let month = time.getMonth() + 1;
-            let realMonth = month > 9 ? month : "0" + month;
-            let day =
-              time.getDate() > 9 ? time.getDate() : "0" + time.getDate();
-            diary.date = time.getFullYear() + "-" + realMonth + "-" + day;
-          });
-          console.log(this.diaryList);
-        })
-        .catch(error => {
-          throw error;
-        });
+    async getAllDiary() {
+      const res = await this.$axios.get("/api/diary/getAllDiary");
+      this.diaryList = handleList(res.data);
     }
   },
-  created(){
-    this.getAllDiary();
+  async created() {
+    await this.getAllDiary();
   }
 };
 </script>

@@ -1,46 +1,46 @@
 <template>
   <div id="home">
-    <div class="cover" id="index">
+    <div class="cover cover-size background flex-column" id="index">
       <a href="#article" id="toBottom">
         <i class="el-icon-bottom"></i>
       </a>
-      <div class="centerword">
+      <div class="centerword flex-column">
         <h1>Ericzz</h1>
         <p>十年生死两茫茫，不思量，自难忘。</p>
         <a href="/menu/blogs">进入 Blog</a>
       </div>
     </div>
-    <div id="article">
-      <div class="header">
+    <div id="article" class="flex-column">
+      <div class="header flex-column">
         <h3>我的文章</h3>
         <p>守一份承诺细诉着爱恋，步入你温暖的城池，人的一生有诸多的美好，而我情有独钟的是你相濡以沫。</p>
       </div>
-      <ul class="articles">
-        <li v-for="(blog,index) in BlogList" :key="index">
+      <ul class="articles flex-vertical-start">
+        <li v-for="(blog,index) in BlogList" :key="index" class="flex-column-start">
           <img :src="blog.coverimg" alt />
           <span class="title">{{blog.title}}</span>
-          <span class="date">{{blog.date}}</span>
+          <span class="date">{{blog.DetailTime}}</span>
           <p class="explain">{{blog.state}}</p>
           <a :href="'/menu/detailBlog?id='+blog._id">阅读更多</a>
         </li>
       </ul>
     </div>
-    <div id="about" class="otherlink">
-      <div class="container">
+    <div id="about" class="otherlink background flex-vertical">
+      <div class="container flex-vertical">
         <a href="/menu/about">关于</a>
         <a href="/menu/otherLink">+友情链接</a>
       </div>
     </div>
     <div id="aboutMe">
-      <div class="me">
+      <div class="me flex-column-start">
         <h3 class="title">Ericzz</h3>
         <p>十年生死两茫茫，不思量，自难忘。</p>
         <a href="/menu/about">About Me</a>
       </div>
-      <div class="link">
+      <div class="link flex-column-start">
         <h3 class="relateLink">相关链接</h3>
         <ul class="container">
-          <li>
+          <li class="font-center">
             <a href class="resource">资源</a>
           </li>
           <li>
@@ -51,7 +51,7 @@
           </li>
         </ul>
       </div>
-      <div class="contactme">
+      <div class="contactme flex-column-start">
         <h3 class="contact">联系我</h3>
         <p class="address">地址:长春市朝阳区JLU</p>
         <p class="qq">QQ:408718358 54136072</p>
@@ -64,7 +64,7 @@
 
 <script>
 // @ is an alias to /src
-
+import {handleList} from '../publicFunction'
 export default {
   name: "Home",
   data() {
@@ -97,34 +97,17 @@ export default {
     this.getThreeBlogs();
   },
   methods: {
-    getThreeBlogs() {
-      this.$axios
-        .get("/api/blog/index")
-        .then(res => {
-          this.BlogList = res.data;
-          console.log(this.BlogList);
-        })
-        .catch(error => {
-          throw error;
-        });
+    async getThreeBlogs() {
+      const res = await this.$axios.get("/api/blog/index");
+      this.BlogList = handleList(res.data);
     }
   }
 };
 </script>
 <style lang="less" scoped>
 #home {
-  overflow-x: hidden;
   .cover {
-    height: 100vh;
-    width: 100vw;
     background: url("../assets/img/cover1.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     transition: all 2s ease-in;
     #toBottom {
       position: absolute;
@@ -147,10 +130,6 @@ export default {
       }
     }
     .centerword {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       h1 {
         font-size: 0.3rem;
         color: #fff;
@@ -181,16 +160,8 @@ export default {
   #article {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     .header {
       flex: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       h3 {
         font-size: 0.2rem;
         padding: 0.2rem;
@@ -207,18 +178,11 @@ export default {
     }
     .articles {
       flex: 4;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
       width: 100vw;
       margin: 0 10%;
       overflow-y: hidden;
       li {
-        display: flex;
         flex: 1;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
         padding: 0.5rem;
         img {
           width: 100%;
@@ -254,16 +218,7 @@ export default {
     height: 62vh;
     width: 100vw;
     background: url("../assets/img/about_index_bg.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       a {
         display: block;
         text-align: center;
@@ -313,10 +268,6 @@ export default {
     padding: 0 7%;
     .me {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
       .title {
         font-size: 0.2rem;
         color: #fff;
@@ -344,10 +295,6 @@ export default {
     }
     .link {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
       .relateLink {
         font-size: 0.2rem;
         color: #fff;
@@ -377,10 +324,6 @@ export default {
     }
     .contactme {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
       .contact {
         font-size: 0.2rem;
         color: #fff;
@@ -424,16 +367,16 @@ export default {
   }
 }
 @keyframes back_to_back {
-  from{
+  from {
     position: absolute;
     right: 0;
     top: 0;
-  }to{
+  }
+  to {
     position: absolute;
     right: 100%;
     top: 100%;
   }
-  
 }
 @media screen and (max-width: 500px) {
   #home {
