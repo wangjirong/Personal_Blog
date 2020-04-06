@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <div class="beian">
+    <div class="beian" id="copyright">
       Copyright © 2020 by Ericzz All Rights Reserved 滇ICP备20001690号
       <span @click="goToManage">l</span>
     </div>

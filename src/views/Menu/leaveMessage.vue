@@ -44,9 +44,11 @@ export default {
           "/api/message/leaveMessage",
           this.message
         );
-        Message.success("留言成功");
-        this.message.text = null;
-        this.reload();
+        if (res.data) {
+          Message.success("留言成功");
+          this.message.text = null;
+          this.reload();
+        }
       }
     },
     async getAllMessages() {
