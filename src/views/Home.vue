@@ -18,9 +18,9 @@
       <ul class="articles flex-vertical-start">
         <li v-for="(blog,index) in BlogList" :key="index" class="flex-column-start">
           <img :src="blog.coverimg" alt />
-          <span class="title">{{blog.title}}</span>
+          <span class="title text-no-wrap">{{blog.title}}</span>
           <span class="date">{{blog.DetailTime}}</span>
-          <p class="explain">{{blog.state}}</p>
+          <p class="explain text-no-wrap">{{blog.state}}</p>
           <a :href="'/menu/detailBlog?id='+blog._id">阅读更多</a>
         </li>
       </ul>
@@ -82,7 +82,7 @@ export default {
       let width = document.documentElement.offsetWidth;
       let url;
       let interval = setInterval(() => {
-        if (index === 5) index = 0;
+        if (index === 4) index = 0;
         if (width < 500)
           url = require(`../assets/img/mobile/home_cover_bg${++index}.jpg`);
         else url = require(`../assets/img/cover${++index}.jpg`);
