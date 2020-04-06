@@ -110,6 +110,8 @@ export default {
 <style lang="less" scoped>
 #regist {
   background: url("../assets/manage/register_bg.jpg");
+  height: 100vh;
+  width: 100vw;
   ul.container {
     width: 30%;
     margin: 1.5rem auto;

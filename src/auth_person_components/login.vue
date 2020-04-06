@@ -65,6 +65,8 @@ export default {
 <style lang="less" scoped>
 #login {
   background: url("../assets/manage/login_bg1.jpg");
+  height: 100vh;
+  width: 100vw;
   .container {
     opacity: 0.8;
     .userName,
