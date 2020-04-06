@@ -25,12 +25,11 @@
         </li>
       </ul>
     </div>
-    <div id="about" class="otherlink background flex-vertical">
-      <div class="container flex-vertical">
-        <a href="/menu/about">关于</a>
-        <a href="/menu/otherLink">+友情链接</a>
-      </div>
+    <div id="about" class="background flex-vertical">
+      <a href="/menu/about">关于</a>
+      <a href="/menu/otherLink">+友情链接</a>
     </div>
+
     <div id="aboutMe">
       <div class="me flex-column-start">
         <h3 class="title">Ericzz</h3>
@@ -64,7 +63,7 @@
 
 <script>
 // @ is an alias to /src
-import {handleList} from '../publicFunction'
+import { handleList } from "../publicFunction";
 export default {
   name: "Home",
   data() {
@@ -218,43 +217,39 @@ export default {
     height: 62vh;
     width: 100vw;
     background: url("../assets/img/about_index_bg.jpg");
-    .container {
-      a {
-        display: block;
-        text-align: center;
-        width: 1rem;
-        border-radius: 1px;
-        font-size: 0.2rem;
-        color: #fff;
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-        padding: 0.1rem 0.2rem;
-        border: 1px solid #fff;
-        margin: 0 0.5rem;
-        position: relative;
-        z-index: 1;
-        &:hover {
-          background-color: none;
-        }
-        &:before {
-          z-index: -1;
-          visibility: hidden;
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 0;
-          height: 100%;
-          background-color: lightgreen;
+    background-attachment: unset !important;
+    a {
+      display: block;
+      text-align: center;
+      width: 1rem;
+      border-radius: 1px;
+      font-size: 0.2rem;
+      color: #fff;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      padding: 0.1rem 0.2rem;
+      border: 1px solid #fff;
+      margin: 0 0.5rem;
+      position: relative;
+      z-index: 1;
+      &:before {
+        z-index: -1;
+        visibility: hidden;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        background-color: lightgreen;
 
-          transform: skewX(45deg, 0);
-          transition: all 1s;
-        }
-        &:hover:before {
-          visibility: visible;
-          width: 150%;
-          left: 0;
-          color: #fff;
-        }
+        transform: skewX(45deg, 0);
+        transition: all 1s;
+      }
+      &:hover:before {
+        visibility: visible;
+        width: 150%;
+        left: 0;
+        color: #fff;
       }
     }
   }
