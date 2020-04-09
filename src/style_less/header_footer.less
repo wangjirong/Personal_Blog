@@ -1,0 +1,88 @@
+#elHeader {
+    .logo {
+      font-size: 0.2rem;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: -0.1rem;
+      left: 10%;
+      font-family: "Helvetica Neue";
+    }
+    ul {
+      li {
+        a {
+          font-size: 0.16rem;
+          padding: 0.2rem 0.32rem;
+          color: #fff;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          &:hover {
+            background-color: limegreen;
+            color: darkred;
+          }
+          &:active {
+            background-color: limegreen;
+          }
+        }
+      }
+    }
+    .qq {
+      position: absolute;
+      right: 10em;
+      z-index: 10;
+      opacity: 1;
+    }
+    .githubLink {
+      position: absolute;
+      right: 3em;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    #elHeader {
+      align-items: flex-start;
+      .logo {
+        display: none;
+      }
+      ul {
+        width: 85%;
+        margin-left: 0;
+        li {
+          flex: 1;
+          a {
+            width: 100%;
+            display: block;
+            font-size: 0.1rem;
+          }
+        }
+      }
+      .qq {
+        right: 0.75em;
+        top: 1.2em;
+        img {
+          height: 2em;
+          width: 2em;
+        }
+      }
+      .githubLink {
+        display: none;
+      }
+    }
+  }
+
+
+
+
+  #footer {
+    height: 8vh;
+    width: 100vw;
+    .beian {
+      background-color: #222;
+      text-align: center;
+      line-height: 8vh;
+      font-size: 0.15rem;
+      color: #fff;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      span{
+        cursor: pointer;
+      }
+    }
+  }

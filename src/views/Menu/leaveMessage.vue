@@ -15,7 +15,8 @@
 <script>
 import { Message } from "element-ui";
 import { getBrowerType } from "../../getLocaltionBrowser";
-import { handleList } from "../../publicFunction";
+import { handleList, getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   inject: ["reload"],
   name: "leaveMessage",
@@ -66,12 +67,24 @@ export default {
   async created() {
     await this.getLocation();
     await this.getAllMessages();
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg(
+        "PC/Menu",
+        `leaveMessagePage_big_bg_img.jpg`
+      );
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `leaveMessagePage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("leaveMessage", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
 <style lang="less" scoped>
 #leaveMessage {
-  background: url("../../assets/img/leaveMessage_bg.jpg");
   width: 100vw;
   .leaveboard {
     width: 80vw;
@@ -129,7 +142,6 @@ export default {
 
 @media screen and (max-width: 500px) {
   #leaveMessage {
-    background: url("../../assets/img/mobile/mobile_bg3.jpg");
     .leaveboard {
       height: 4rem;
       h3 {

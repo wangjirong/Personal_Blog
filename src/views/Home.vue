@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <div class="cover cover-size background flex-column" id="index">
+    <div class="cover cover-size background flex-column" id="cover">
       <a href="#article" id="toBottom">
         <i class="el-icon-bottom"></i>
       </a>
@@ -29,7 +29,13 @@
       <a href="/menu/about">关于</a>
       <a href="/menu/otherLink">+友情链接</a>
     </div>
-
+    <div id="runningTime">
+      <span>本站已运行时间:</span>
+      <span>{{runningTime.subDays}}天</span>
+      <span>{{runningTime.subHours}}小时</span>
+      <span>{{runningTime.subMinutes}}分钟</span>
+      <span>{{runningTime.subSeconds}}秒</span>
+    </div>
     <div id="aboutMe">
       <div class="me flex-column-start">
         <h3 class="title">Ericzz</h3>
@@ -63,13 +69,20 @@
 
 <script>
 // @ is an alias to /src
-import { handleList } from "../publicFunction";
+import {
+  handleList,
+  getBgCoverImg,
+  getWebSiteRunningTime
+} from "../publicFunction";
+import Resource from "../config/Resource";
+import { setBackgroundByWidth, setbackground } from "../setBackgroundImage";
 export default {
   name: "Home",
   data() {
     return {
       isShow: false,
-      BlogList: []
+      BlogList: [],
+      runningTime: {}
     };
   },
   components: {
@@ -77,37 +90,57 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let cover = document.getElementById("index");
+      //设置首页默认背景图片
+      const smallImageURL_index = getBgCoverImg(
+        "Mobile/Index_Home",
+        `homePage_small_bg_img1.jpg`
+      );
+      const bigImageURL_index = getBgCoverImg(
+        "PC/Index_Home",
+        `homePage_big_bg_img1.jpg`
+      ); //pc设备，大屏幕
+      setBackgroundByWidth("cover", bigImageURL_index, smallImageURL_index);
+      //设置about背景图片
+      const aboutCoverBg = getBgCoverImg("PC/Index_Home", "homePage_about.jpg");
+      setbackground("about", aboutCoverBg);
+
+      //设置首页轮播图---按设备大小轮播
       let index = 0;
-      let width = document.documentElement.offsetWidth;
-      let url;
       let interval = setInterval(() => {
         if (index === 4) index = 0;
-        if (width < 500)
-          url = require(`../assets/img/mobile/home_cover_bg${++index}.jpg`);
-        else url = require(`../assets/img/cover${++index}.jpg`);
-        cover.style.background = `url(${url}) no-repeat center center`;
-        cover.style.backgroundSize = "100% 100%";
-        cover.style.transition = "all 2s ease-in";
-      }, 10000);
+        let bigurl = getBgCoverImg(
+          "PC/Index_Home",
+          `homePage_big_bg_img${++index}.jpg`
+        );
+        let smallurl = getBgCoverImg(
+          "Mobile/Index_Home",
+          `homePage_small_bg_img${++index}.jpg`
+        );
+        setBackgroundByWidth("cover", bigurl, smallurl);
+      }, 20000);
     });
   },
-  created() {
-    this.getThreeBlogs();
+  async created() {
+    await this.getThreeBlogs();
+    this.getRunningTime();
   },
   methods: {
     async getThreeBlogs() {
       const res = await this.$axios.get("/api/blog/index");
       this.BlogList = handleList(res.data);
+    },
+    getRunningTime() {
+      setInterval(() => {
+        this.runningTime = getWebSiteRunningTime();
+      }, 1000);
     }
   }
 };
 </script>
 <style lang="less" scoped>
 #home {
-  .cover {
-    background: url("../assets/img/cover1.jpg");
-    transition: all 2s ease-in;
+  #cover {
+    transition: all 2s ease-in !important;
     #toBottom {
       position: absolute;
       width: 0.4rem;
@@ -214,9 +247,8 @@ export default {
     }
   }
   #about {
-    height: 62vh;
+    height: 60vh;
     width: 100vw;
-    background: url("../assets/img/about_index_bg.jpg");
     background-attachment: unset !important;
     a {
       display: block;
@@ -251,6 +283,15 @@ export default {
         left: 0;
         color: #fff;
       }
+    }
+  }
+  #runningTime {
+    background-color: #333;
+    padding: 1em 5em 0;
+    span {
+      color: #fff;
+      margin-right: 0.5em;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     }
   }
   #aboutMe {
@@ -375,12 +416,6 @@ export default {
 }
 @media screen and (max-width: 500px) {
   #home {
-    .cover {
-      background: url("../assets/img/mobile/home_cover_bg1.jpg") no-repeat
-        center center;
-      background-size: 100% 100%;
-      transition: all 2s ease-in;
-    }
     #article {
       height: 180vh;
       .header {

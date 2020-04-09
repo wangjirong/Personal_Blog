@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   name: "OtherLink",
 
@@ -189,13 +191,25 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg(
+        "PC/Menu",
+        `otherLinkPage_big_bg_img.jpg`
+      );
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `otherLinkPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("otherLink", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
 
 <style lang="less" scoped>
 #otherLink {
-  background-image: url("../../assets/img/otherLink.bg1.jpg");
   width: 100vw;
   ul {
     width: 80%;
@@ -239,7 +253,6 @@ export default {
 }
 @media screen and (max-width: 500px) {
   #otherLink {
-    background: url("../../assets/img/mobile/mobile_bg5.jpg");
     ul {
       width: 90%;
       margin: 1rem auto;

@@ -166,7 +166,8 @@
 
 <script>
 import { Message } from "element-ui";
-import { handleItem, handleList } from "../../publicFunction";
+import { handleItem, handleList, getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   name: "detailBlog",
   inject: ["reload"],
@@ -230,7 +231,14 @@ export default {
     this.getAllComments();
   },
   mounted() {
-    // this.playMusic();
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg("PC/Menu", `detailBlogPage_big_bg_img.jpg`);
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `detailBlogPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("detailBlog", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
@@ -242,7 +250,7 @@ export default {
     width: 80vw;
     margin: 1rem auto;
     margin-bottom: 5em;
-    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, .8);
     border-radius: 6px;
     padding: 0.2rem 0.3rem;
     .navheader {

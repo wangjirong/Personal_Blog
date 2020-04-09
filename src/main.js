@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 //公共样式
 import './default.less'
 import '../src/style_less/header_footer.less'

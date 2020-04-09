@@ -96,7 +96,8 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { handleList } from "../../publicFunction";
+import { handleList,getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   name: "blogs",
   data() {
@@ -142,7 +143,6 @@ export default {
       this.recommendTopBlogList = handleList(res.data.recommendTop3);
       //最近访客
       this.recentUsers = res.data.recentUser;
-      
     },
     //按下回车进行查询
     async searchWhereKeyDown(event) {
@@ -168,13 +168,22 @@ export default {
         return this.allBlog;
       } else return handleList(res.data);
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg("PC/Menu", `blogsPage_big_bg_img.jpg`);
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `blogsPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("blogs", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
 <style lang="less" scoped>
 #blogs {
   width: 100vw;
-  background: url("../../assets/img/Blogs_bg.jpg");
   display: flex;
   .blogs {
     flex: 4;
@@ -410,9 +419,6 @@ export default {
 
 @media screen and (max-width: 500px) {
   #blogs {
-    background: url("../../assets/img/mobile/mobile_bg6.jpg") fixed no-repeat
-      center center;
-    background-size: 100% 100%;
     .blogs {
       ul {
         li {

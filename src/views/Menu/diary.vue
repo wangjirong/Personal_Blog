@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { handleList } from "../../publicFunction";
+import { handleList, getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   name: "diary",
   data() {
@@ -37,6 +38,16 @@ export default {
       const res = await this.$axios.get("/api/diary/getAllDiary");
       this.diaryList = handleList(res.data);
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg("PC/Menu", `diaryPage_big_bg_img.jpg`);
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `diaryPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("diary", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
@@ -44,7 +55,6 @@ export default {
 #diary {
   width: 100vw;
   text-align: center;
-  background: url("../../assets/img/diary_bg1.jpg");
   .context {
     width: 70%;
     background: rgba(255, 255, 255, 0.8);
@@ -56,7 +66,7 @@ export default {
 }
 @media screen and (max-width: 500px) {
   #diary {
-    background: url("../../assets/img/mobile/mobile_bg4.jpg");
+    
   }
 }
 </style>

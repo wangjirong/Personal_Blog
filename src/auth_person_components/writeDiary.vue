@@ -1,6 +1,6 @@
 <template>
   <div id="writeDiary" class="background cover-size flex-column">
-    <elHeader class="header"/>
+    <elHeader class="header" />
     <div class="poeam">
       <p>红酥手。黄滕酒。满城春色宫墙柳。东风恶。欢情薄。一怀愁绪，几年离索。错错错。</p>
       <p>春如旧。人空瘦。泪痕红浥鲛绡透。桃花落。闲池阁。山盟虽在，锦书难托。莫莫莫。</p>
@@ -26,6 +26,8 @@
 
 <script>
 import { Message } from "element-ui";
+import { getBgCoverImg } from "../publicFunction";
+import { setBackgroundByWidth } from "../setBackgroundImage";
 export default {
   name: "writeDiary",
   data() {
@@ -59,13 +61,26 @@ export default {
       Message.success("上传成功！");
       this.$router.push("/menu/diary");
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg(
+        "PC/Manage",
+        `writeDiaryPage_big_bg_img.jpg`
+      );
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Manage",
+        `writeDiaryPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("writeDiary", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
 <style lang="less" scoped>
 #writeDiary {
   background: url("../assets/img/write_diary_bg.jpg");
-  .header{
+  .header {
     position: fixed;
     top: 0;
     left: 0;

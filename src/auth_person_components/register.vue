@@ -1,5 +1,5 @@
 <template>
-  <div id="regist" class="background-fix">
+  <div id="register" class="background cover-size fixed">
     <ul class="container flex-just-column">
       <li>
         <input type="text" placeholder="请输入用户名" v-model="manager.userName" />
@@ -39,7 +39,9 @@
 </template>
 
 <script>
-import { Loading, Message } from "element-ui";
+import { getBgCoverImg } from "../publicFunction";
+import { setBackgroundByWidth } from "../setBackgroundImage";
+import { Message } from "element-ui";
 export default {
   name: "register",
   data() {
@@ -104,14 +106,24 @@ export default {
         }
       }
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg(
+        "PC/Manage",
+        `registerPage_big_bg_img.jpg`
+      );
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Manage",
+        `registerPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("register", bigImageURL, smallImageURL);
+    });
   }
 };
 </script>
 <style lang="less" scoped>
-#regist {
-  background: url("../assets/manage/register_bg.jpg");
-  height: 100vh;
-  width: 100vw;
+#register {
   ul.container {
     width: 30%;
     margin: 1.5rem auto;

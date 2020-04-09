@@ -1,0 +1,143 @@
+* {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: content-box;
+    transition: .5s linear;
+    transition: linear .5s;
+    font-size: .15rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+/* a:hover{
+    text-decoration: underline;
+} */
+ul {
+    list-style: none;
+}
+
+body * {
+    transition: ease-in-out 500ms;
+    font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Arial", "Verdana", "Microsoft Yahei", sans-serif;
+    transition-property: background, color, border, width, height, margin, padding, top, right, bottom, left, transform, opacity, visibility, zoom;
+}
+
+.flex-justColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-column-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-just-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.font-center,
+.flex-vertical {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.flex-column-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flex-vertical-start {
+    display: flex;
+    align-items: flex-start;
+    // vertical-align: middle;
+}
+
+.flex-spaceBetween,
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-vertical-start-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.userName {
+    color: #01aaed;
+    font-size: 1.1em;
+}
+
+#elHeader {
+    background-color: #484348;
+    background: rgba(48, 43, 48, .95);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.color-black {
+    color: #000;
+}
+
+.background {
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.cover-size {
+    width: 100vw;
+    height: 100vh;
+}
+
+//超出不换行，显示...
+.text-no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -35,13 +35,24 @@
 </template>
 
 <script>
+import { getBgCoverImg } from "../../publicFunction";
+import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
-  name: "about"
+  name: "about",
+  mounted() {
+    this.$nextTick(() => {
+      const bigImageURL = getBgCoverImg("PC/Menu", `aboutPage_big_bg_img.jpg`);
+      const smallImageURL = getBgCoverImg(
+        "Mobile/Menu",
+        `aboutPage_small_bg_img.jpg`
+      );
+      setBackgroundByWidth("about", bigImageURL, smallImageURL);
+    });
+  }
 };
 </script>
 <style lang="less" scoped>
 #about {
-  background: url("../../assets/img/aboutback_bg.jpg");
   .aboutnav {
     height: 18vh;
     width: 100vw;
@@ -102,10 +113,6 @@ export default {
 }
 @media screen and (max-width: 500px) {
   #about {
-    background: url("../../assets/img/mobile/mobile_bg10.jpg") no-repeat fixed
-      center center;
-    background-size: 100% 100%;
-
     .aboutnav {
       h1 {
         font-size: 0.15rem;
