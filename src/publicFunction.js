@@ -149,7 +149,7 @@ export function getRandomNumber() {
 
 const Resource = require('./config/Resource')
 export function getBgCoverImg(folder, fileName) {
-    return `${Resource.localHost}${Resource.backgroundFile}${folder}/${fileName}`;
+    return `${Resource.serverRoot}${Resource.backgroundFile}${folder}/${fileName}`;
 }
 
 

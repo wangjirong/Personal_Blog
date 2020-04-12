@@ -51,6 +51,13 @@
           </li>
         </ul>
       </div>
+      <div class="expandRead flex-column-left">
+        <span class="expandTitle">扩展阅读</span>
+        <div class="expandItem flex-vertical-start" v-for="item in expandReadList" :key="item.id">
+          <i class="el-icon-link"></i>
+          <a :href="item.href">{{item.title}}</a>
+        </div>
+      </div>
       <div class="awesome">
         <ul class="svg-group flex-vertical">
           <li class="svg-item">
@@ -182,7 +189,17 @@ export default {
         userId: this.$store.state.user.id,
         text: ""
       },
-      comments: []
+      comments: [],
+      expandReadList: [
+        {
+          title: "经典排序算法（一）",
+          href: "http://cirev.cn/menu/detailBlog?id=5e917250efaa7445269da4e1"
+        },
+        {
+          title: "经典排序算法（二）",
+          href: "http://cirev.cn/menu/detailBlog?id=5e917843efaa7445269da4e4"
+        }
+      ] //延申阅读，两篇文章，只需要title和href
     };
   },
   components: {
@@ -232,7 +249,10 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      const bigImageURL = getBgCoverImg("PC/Menu", `detailBlogPage_big_bg_img.jpg`);
+      const bigImageURL = getBgCoverImg(
+        "PC/Menu",
+        `detailBlogPage_big_bg_img.jpg`
+      );
       const smallImageURL = getBgCoverImg(
         "Mobile/Menu",
         `detailBlogPage_small_bg_img.jpg`
@@ -250,7 +270,7 @@ export default {
     width: 80vw;
     margin: 1rem auto;
     margin-bottom: 5em;
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 6px;
     padding: 0.2rem 0.3rem;
     .navheader {
@@ -315,6 +335,32 @@ export default {
             }
           }
         }
+      }
+    }
+    .expandRead {
+      .expandTitle {
+        width: 100%;
+        padding: 0.5em 1em;
+        background: rgb(192, 192, 192, 0);
+        color: #fff;
+        border-left: 5px solid lime;
+        margin-bottom: 1em;
+      }
+      .expandItem {
+        padding: 0.5em 1em;
+
+        a,i{
+          color: #3e8bc7;
+        }
+        a{
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+        i{
+          padding:0 .3em;
+        }
+       
       }
     }
     .awesome {
