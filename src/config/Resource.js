@@ -1,9 +1,9 @@
 module.exports = {
     localHost: 'http://127.0.0.1:3000',
     //服务器地址
-    serverRoot: 'http://118.31.173.212:3000',
+    serverRoot: 'https://erics-bucket.oss-cn-beijing.aliyuncs.com',
     //背景图片文件夹
-    backgroundFile: '/static/background_image/',
+    backgroundFile: '/Background-Image/',
     //首页背景图片——PC端大图--实际应为数组轮播
     homePage_cover_big_bg: [
         'homePage_big_bg_img1.jpg',
