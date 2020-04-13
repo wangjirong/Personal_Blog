@@ -1,7 +1,7 @@
 <template>
   <div id="blogs" class="background">
     <div class="blogs">
-      <ul class="flex-column">
+      <ul class="flex-column allblog">
         <li v-for="(blog,index) in blogList" :key="index" class="flex-column-start">
           <h3 class="title flex-space-between">
             <span>{{blog.title}}</span>
@@ -37,6 +37,15 @@
           </div>
         </li>
       </ul>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="5"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalBlogsNumber"
+      ></el-pagination>
     </div>
     <div class="element">
       <div class="searchArticle">
@@ -96,17 +105,19 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { handleList,getBgCoverImg } from "../../publicFunction";
+import { handleList, getBgCoverImg } from "../../publicFunction";
 import { setBackgroundByWidth } from "../../setBackgroundImage";
 export default {
   name: "blogs",
   data() {
     return {
       blogList: [],
-      allBlog: [],
+      totalBlogsNumber:null,
       hotTopBlogList: [],
       recommendTopBlogList: [],
       keyword: "",
+      currentPage: 1,
+      currengPageSize: 5,
       classfyList: [
         {
           tag: "HTML5、CSS3",
@@ -132,11 +143,21 @@ export default {
     await this.getAll();
   },
   methods: {
+    async handleSizeChange(val) {
+      // console.log(`每页 ${val} 条`);
+      this.currengPageSize = val;
+      this.blogList = await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
+    },
+   async handleCurrentChange(val) {
+      // console.log(`当前页: ${val}`);
+      this.currentPage = val;
+      this.blogList = await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
+    },
     async getAll() {
       const res = await this.$axios.get("/api/blog/allBlog");
       //全部文章
-      this.allBlog = handleList(res.data.allBlogs);
-      this.blogList = this.allBlog;
+      this.totalBlogsNumber = res.data.allBlogsCount;
+      this.blogList = await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
       //top5
       this.hotTopBlogList = handleList(res.data.hotTop5);
       //置顶3篇
@@ -147,10 +168,11 @@ export default {
     //按下回车进行查询
     async searchWhereKeyDown(event) {
       if (event.keyCode === 13) {
-        if (!this.keyword) this.blogList = this.allBlog;
+        if (!this.keyword) this.blogList = await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
         else {
           const res = await this.searchByKeyword(this.keyword);
           this.blogList = res;
+          this.totalBlogsNumber = this.blogList.length;
         }
       }
     },
@@ -165,8 +187,14 @@ export default {
       console.log(res.data);
       if (res.data.length === 0) {
         Message.error("抱歉！没有找到，请换个关键词！！！1秒后返回....");
-        return this.allBlog;
+        return await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
       } else return handleList(res.data);
+    },
+    async getBlogsByPageIndex_PageSize(pageIndex, pageSize) {
+      const res = await this.$axios.get(
+        `/api/blog/getBlogByPageSize_Index?pageIndex=${pageIndex}&&pageSize=${pageSize}`
+      );
+      return handleList(res.data);
     }
   },
   mounted() {
@@ -188,7 +216,7 @@ export default {
   .blogs {
     flex: 4;
     margin: 1.5rem 5%;
-    ul {
+    ul.allblog {
       li {
         box-sizing: border-box;
         background: rgba(255, 255, 255, 0.9);
@@ -289,6 +317,27 @@ export default {
               }
             }
           }
+        }
+      }
+    }
+    ul.dividePage {
+      li {
+        margin-right: 1em;
+        button {
+          border: none;
+          padding: 0.3em 0.5em;
+          border-radius: 5px;
+          background-color: maroon;
+          color: #fff;
+          &:hover {
+            background-color: lime;
+          }
+        }
+        input {
+          width: 2em;
+          border: none;
+          padding: 0.3em 0.5em;
+          border-radius: 5px;
         }
       }
     }

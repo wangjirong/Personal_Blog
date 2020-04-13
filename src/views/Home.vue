@@ -20,7 +20,8 @@
           <img :src="blog.coverimg" alt />
           <span class="title text-no-wrap">{{blog.title}}</span>
           <span class="date">{{blog.DetailTime}}</span>
-          <p class="explain text-no-wrap">{{blog.state}}</p>
+          <p class="explain ">{{blog.state}}</p>
+          <!--text-no-wrap-->
           <a :href="'/menu/detailBlog?id='+blog._id">阅读更多</a>
         </li>
       </ul>
@@ -209,9 +210,9 @@ export default {
       }
     }
     .articles {
-      flex: 4;
+      flex: 5.5;
       width: 100vw;
-      margin: 0 10%;
+      margin: 0 auto;
       overflow-y: hidden;
       li {
         flex: 1;
