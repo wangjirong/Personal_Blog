@@ -21,6 +21,7 @@
           <h4>本站结构</h4>
           <h5>前端: Vue Cli4.0</h5>
           <h5>后端: Nodejs+Express+MongoDB</h5>
+          <h5>资源: 阿里云OSS对象存储</h5>
           <h5>服务器:阿里云ESC学生机</h5>
         </li>
         <li>
