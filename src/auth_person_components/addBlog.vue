@@ -118,7 +118,7 @@ export default {
         .then(res => {
           console.log(res.data);
           Message.success('提交成功！');
-          this.$router.push('/menu/blogs');
+          this.$router.push('/auth_personal/manage/blogsList');
         })
         .catch(error => {
           throw error;

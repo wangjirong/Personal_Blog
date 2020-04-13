@@ -59,7 +59,7 @@ export default {
       });
       const res = await this.$axios.post("/api/diary/addDiary", formData);
       Message.success("上传成功！");
-      this.$router.push("/menu/diary");
+      this.$router.push("/auth_personal/manage/diary");
     }
   },
   mounted() {
