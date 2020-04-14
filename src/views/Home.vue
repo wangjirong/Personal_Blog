@@ -20,7 +20,7 @@
           <img :src="blog.coverimg" alt />
           <span class="title text-no-wrap">{{blog.title}}</span>
           <span class="date">{{blog.DetailTime}}</span>
-          <p class="explain ">{{blog.state}}</p>
+          <p class="explain">{{blog.state}}</p>
           <!--text-no-wrap-->
           <a :href="'/menu/detailBlog?id='+blog._id">阅读更多</a>
         </li>
@@ -31,7 +31,7 @@
       <a href="/menu/otherLink">+友情链接</a>
     </div>
     <div id="runningTime">
-      <span>本站已运行时间:</span>
+      <span>——本站已运行时间:</span>
       <span>{{runningTime.subDays}}天</span>
       <span>{{runningTime.subHours}}小时</span>
       <span>{{runningTime.subMinutes}}分钟</span>
@@ -437,12 +437,17 @@ export default {
     }
     #about {
       height: 30vh;
-      .container {
-        flex-direction: column;
-        a {
-          margin-bottom: 1em;
-        }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      a {
+        margin-bottom: 1em;
       }
+    }
+    #runningTime{
+      padding-left: 1em;
+      padding-right: 0;
     }
     #aboutMe {
       flex-direction: column;

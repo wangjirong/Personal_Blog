@@ -184,7 +184,6 @@ export default {
       const res = await this.$axios.get(
         `/api/blog/searchBlogByKeyword?keyword=${keyword}`
       );
-      console.log(res.data);
       if (res.data.length === 0) {
         Message.error("抱歉！没有找到，请换个关键词！！！1秒后返回....");
         return await this.getBlogsByPageIndex_PageSize(this.currentPage,this.currengPageSize);
@@ -247,6 +246,7 @@ export default {
         }
         .blogImgState {
           margin: 0.1rem auto;
+        
           img {
             flex: 3;
             height: 2rem;
@@ -487,21 +487,25 @@ export default {
             }
           }
           .blogImgState {
+              flex-direction: column ;
             img {
-              flex: 3;
-              height: 5em;
+              display: block !important;
+              height: 3em !important;
+              width: 100% ;
+              margin-right: 0 !important;
             }
             h4 {
-              flex: 5;
-              font-size: 0.15rem;
+              font-size: 0.14rem !important;
+              padding-top: 1em !important;
             }
           }
           .readmore {
             a {
-              font-size: 0.1rem;
+              padding: .2em !important;
+              font-size: .14rem !important;
             }
             span {
-              margin: 0.6em;
+              margin: 0.1rem !important;
             }
           }
           .classfy {
