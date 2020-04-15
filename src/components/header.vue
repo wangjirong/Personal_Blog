@@ -1,8 +1,13 @@
 <template>
   <div id="elHeader">
     <ul class="navbar flex-vertical">
-      <li v-for="item in Menu" :key="item.id" class="flex-vertical">
-        <router-link :to="item.href">{{item.title}}</router-link>
+      <li
+        v-for="(item,index) in Menu"
+        :key="index"
+        class="flex-vertical"
+        @click="changeColor(index)"
+      >
+        <router-link :to="item.href" class="menu-item">{{item.title}}</router-link>
       </li>
     </ul>
     <div class="qq">
@@ -112,6 +117,13 @@ export default {
     outLogin() {
       QC.Login.signOut();
       this.reload();
+    },
+    changeColor(index) {
+      const ele = document.querySelectorAll(".menu-item");
+      for (let i = 0; i < ele.length; i++) {
+        if (i === index) ele[i].className += " menu-item-active";
+        else ele[i].className = "menu-item";
+      }
     }
   },
   created() {
@@ -119,3 +131,9 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+.menu-item-active {
+  background-color: limegreen;
+  color: darkred;
+}
+</style>

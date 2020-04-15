@@ -214,6 +214,7 @@ export default {
       width: 100vw;
       margin: 0 auto;
       overflow-y: hidden;
+      animation: fadein 3s linear;
       li {
         flex: 1;
         padding: 0.5rem;
@@ -221,6 +222,10 @@ export default {
           width: 100%;
           height: 2.8rem;
           border-radius: 1px;
+          &:hover {
+            transform: scale(1.1);
+            transition: all linear 1s;
+          }
         }
         .title {
           font-size: 0.18rem;
@@ -415,6 +420,22 @@ export default {
     top: 100%;
   }
 }
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @media screen and (max-width: 500px) {
   #home {
     #article {
@@ -445,7 +466,7 @@ export default {
         margin-bottom: 1em;
       }
     }
-    #runningTime{
+    #runningTime {
       padding-left: 1em;
       padding-right: 0;
     }
