@@ -1,13 +1,8 @@
 <template>
   <div id="elHeader">
     <ul class="navbar flex-vertical">
-      <li
-        v-for="(item,index) in Menu"
-        :key="index"
-        class="flex-vertical"
-        @click="changeColor(index)"
-      >
-        <router-link :to="item.href" class="menu-item">{{item.title}}</router-link>
+      <li v-for="(item,index) in Menu" :key="index" class="flex-vertical">
+        <router-link :to="item.href" class="menu-item" @click="changeColor(index)">{{item.title}}</router-link>
       </li>
     </ul>
     <div class="qq">
