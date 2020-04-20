@@ -1,5 +1,6 @@
 <template>
     <div id="elHeader" class="flex-vertical">
+        <div class="logo font-center">十年生死</div>
         <ul class="navbar flex-vertical" v-if="menuVisiavle">
             <li v-for="(item,index) in Menu" :key="index" class="flex-vertical">
                 <router-link
