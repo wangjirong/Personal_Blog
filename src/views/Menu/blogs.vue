@@ -219,7 +219,7 @@ export default {
   display: flex;
   .blogs {
     flex: 4;
-    margin: 1.5rem 5%;
+    margin: 1.5rem 5% .5rem;
     ul.allblog {
       li {
         box-sizing: border-box;
@@ -473,6 +473,7 @@ export default {
 
 @media screen and (max-width: 500px) {
   #blogs {
+    flex-direction: column;
     .blogs {
       ul {
         li {
@@ -534,7 +535,7 @@ export default {
       }
     }
     .element {
-      display: none;
+      margin: 0 auto .5rem;
     }
   }
 }
