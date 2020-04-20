@@ -475,6 +475,7 @@ export default {
   #blogs {
     flex-direction: column;
     .blogs {
+      margin-top: 1rem;
       ul {
         li {
           .title {
@@ -535,7 +536,7 @@ export default {
       }
     }
     .element {
-      margin: 0 auto .5rem;
+      margin: 0 5% .5rem;
     }
   }
 }
