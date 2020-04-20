@@ -497,7 +497,7 @@ export default {
               flex-direction: column ;
             img {
               display: block !important;
-              height: 3em !important;
+              min-height: 35px;
               width: 100% ;
               margin-right: 0 !important;
             }

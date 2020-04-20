@@ -5,7 +5,7 @@
     </div>
     <div class="box">
       <div class="navheader flex-space-between">
-        <h2>
+        <h2 class="art-title">
           <h1 class="title">
             {{blog.title}}
             <i class="el-icon-video-play" v-show="!isPlay" @click="playMusic"></i>
@@ -279,7 +279,7 @@ export default {
     .navheader {
       margin-bottom: 0.1rem;
       border-bottom: 1px solid #ccc;
-      h2 {
+      h2.art-title {
         h1.title {
           font-size: 0.18rem;
           font-family: "Times New Roman", Times, serif;
@@ -417,9 +417,11 @@ export default {
   #detailBlog {
     background: url("../../assets/img/mobile/mobile_bg5.jpg");
     .box {
-      margin: 1rem auto;
+      width: 95vw;
+      padding: 1em .5em;
       .navheader {
-        h2 {
+        h2.art-title {
+          padding-left: .12rem;
           h1.title {
             font-size: 0.16rem;
           }
@@ -435,7 +437,6 @@ export default {
           }
         }
         h3.dateDay {
-          margin-top: 0.5em;
           h1 {
             font-size: 0.2rem;
           }
@@ -444,9 +445,9 @@ export default {
           }
         }
       }
-      .context {
-        padding: 0.5em;
-      }
+      /*.context {*/
+      /*  padding: 0.5em;*/
+      /*}*/
       .state {
         ul {
           margin: 0;
