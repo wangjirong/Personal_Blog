@@ -1,0 +1,76 @@
+#elHeader .logo {
+  font-size: 0.2rem;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.1rem;
+  left: 10%;
+  font-family: "Helvetica Neue";
+}
+#elHeader ul li a {
+  font-size: 0.16rem;
+  padding: 0.2rem 0.32rem;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#elHeader ul li a:hover {
+  background-color: limegreen;
+  color: darkred;
+}
+#elHeader ul li .active {
+  background-color: limegreen;
+  color: darkred;
+}
+#elHeader .qq {
+  position: absolute;
+  right: 10em;
+  z-index: 10;
+  opacity: 1;
+}
+#elHeader .githubLink {
+  position: absolute;
+  right: 3em;
+}
+@media only screen and (max-width: 500px) {
+  #elHeader {
+    align-items: flex-start;
+  }
+  #elHeader .logo {
+    display: none;
+  }
+  #elHeader ul {
+    width: 85%;
+    flex-direction: column;
+  }
+  #elHeader ul li a {
+    width: 100%;
+    display: block;
+    font-size: 0.1rem;
+  }
+  #elHeader .qq {
+    right: 0.75em;
+    top: 1.2em;
+  }
+  #elHeader .qq img {
+    height: 2em;
+    width: 2em;
+  }
+  #elHeader .githubLink {
+    display: none;
+  }
+}
+#footer {
+  height: 8vh;
+  width: 100vw;
+}
+#footer .beian {
+  background-color: #222;
+  text-align: center;
+  line-height: 8vh;
+  font-size: 0.15rem;
+  color: #fff;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+#footer .beian span {
+  cursor: pointer;
+}

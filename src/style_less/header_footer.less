@@ -1,4 +1,5 @@
 #elHeader {
+  justify-content: space-between;
   .logo {
     font-size: 0.2rem;
     color: #fff;
@@ -9,7 +10,9 @@
     font-family: "Helvetica Neue";
   }
 
-  ul {
+  .navbar {
+    margin-left: 5em;
+
     li {
       a {
         font-size: 0.16rem;
@@ -22,67 +25,79 @@
           color: darkred;
         }
       }
-
-      .active {
-        background-color: limegreen;
-        color: darkred;
-      }
     }
   }
 
-  .qq {
-    position: absolute;
-    right: 10em;
-    z-index: 10;
-    opacity: 1;
-  }
+  .right-nav {
+    margin-right: 10em;
+    li{
+      margin: 0 1em;
+    }
+    .qq {
 
-  .githubLink {
-    position: absolute;
-    right: 3em;
+    }
+
+    .github {
+
+    }
+
+    .menu-btn {
+      display: none;
+    i{
+      font-size: 1.5em;
+      color: #ffffff;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    }
   }
 }
 
 @media only screen and (max-width: 500px) {
   #elHeader {
     align-items: flex-start;
+    padding: .5em;
 
     .logo {
       display: none;
     }
 
-    ul {
-      width: 85%;
-      margin-left: 0;
+    .navbar {
+      width: 100vw;
+      padding: 0;
+      margin: 5em 0 0 0;
+      flex-direction: column;
+      transition: top linear .5s;
 
       li {
-        flex: 1;
-
         a {
-          width: 100%;
-          display: block;
-          font-size: 0.1rem;
+          width: 100vw;
+          text-align: center;
+          display: inline;
+          font-size: 0.14rem;
+          padding: .8em 0;
         }
       }
     }
-
-    .qq {
-      right: 0.75em;
-      top: 1.2em;
-
-      img {
-        height: 2em;
-        width: 2em;
+    .right-nav{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(48,43,48,.95);
+      height: 5em;
+      width: 100vw;
+      padding-left: 30%;
+      .menu-btn{
+        display: block;
       }
     }
 
-    .githubLink {
-      display: none;
-    }
+
+
   }
 }
-
-
 
 
 #footer {
