@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { handleList } from "../publicFunction";
+import { handleList } from "../JS/publicFunction";
 export default {
   data() {
     return {

@@ -1,5 +1,8 @@
 <template>
   <div id="leaveMessage" class="background">
+    <div  class="cover-bg">
+      <img src="" alt="" id="leaveMessage-bg">
+    </div>
     <div class="leaveboard flex-column-start">
       <h3>留言板</h3>
       <h5>就让我们一直走下去，直到世界一片纯白。</h5>
@@ -14,9 +17,9 @@
 
 <script>
 import { Message } from "element-ui";
-import { getBrowerType } from "../../getLocaltionBrowser";
-import { handleList, getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { getBrowerType } from "../../JS/getLocaltionBrowser";
+import { handleList, getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   inject: ["reload"],
   name: "leaveMessage",
@@ -78,7 +81,7 @@ export default {
         "Mobile/Menu",
         `leaveMessagePage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("leaveMessage", bigImageURL, smallImageURL);
+      setBackgroundByWidth("leaveMessage-bg", bigImageURL, smallImageURL);
     });
   }
 };

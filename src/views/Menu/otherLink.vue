@@ -1,5 +1,8 @@
 <template>
   <div id="otherLink" class="background">
+    <div  class="cover-bg">
+      <img src="" alt="" id="otherLink-bg">
+    </div>
     <ul>
       <li v-for="(item,index) in linkList" :key="index">
         <h5>{{item.title}}</h5>
@@ -18,8 +21,8 @@
 </template>
 
 <script>
-import { getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   name: "OtherLink",
 
@@ -202,7 +205,7 @@ export default {
         "Mobile/Menu",
         `otherLinkPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("otherLink", bigImageURL, smallImageURL);
+      setBackgroundByWidth("otherLink-bg", bigImageURL, smallImageURL);
     });
   }
 };

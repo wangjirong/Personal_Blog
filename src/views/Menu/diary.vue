@@ -1,5 +1,8 @@
 <template>
   <div id="diary" class="background">
+    <div  class="cover-bg">
+      <img src="" alt="" id="diary-bg">
+    </div>
     <div class="container">
       <div class="context">
         <el-timeline>
@@ -21,8 +24,8 @@
 </template>
 
 <script>
-import { handleList, getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { handleList, getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   name: "diary",
   data() {
@@ -46,7 +49,7 @@ export default {
         "Mobile/Menu",
         `diaryPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("diary", bigImageURL, smallImageURL);
+      setBackgroundByWidth("diary-bg", bigImageURL, smallImageURL);
     });
   }
 };

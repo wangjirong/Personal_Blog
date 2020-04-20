@@ -7,11 +7,17 @@
 */
 export function setBackgroundByWidth(id, BigImage, smallImage) {
     const width = document.documentElement.offsetWidth;
-    if (width < 500) setbackground(id, smallImage)
-    else setbackground(id, BigImage)
+    if (width < 500) setImageSrc(id, smallImage)
+    else setImageSrc(id, BigImage)
 }
 
 export function setbackground(id, imgURL) {
     const dom = document.getElementById(id);
     dom.style.background = `url(${imgURL})`
+}
+
+export function setImageSrc(id, imgURL) {
+    const img = document.getElementById(id);
+    img.setAttribute("src", imgURL)
+
 }

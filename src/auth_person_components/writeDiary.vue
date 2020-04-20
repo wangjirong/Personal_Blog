@@ -26,8 +26,8 @@
 
 <script>
 import { Message } from "element-ui";
-import { getBgCoverImg } from "../publicFunction";
-import { setBackgroundByWidth } from "../setBackgroundImage";
+import { getBgCoverImg } from "../JS/publicFunction";
+import { setBackgroundByWidth } from "../JS/setBackgroundImage";
 export default {
   name: "writeDiary",
   data() {

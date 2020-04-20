@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import { getBgCoverImg } from "../publicFunction";
-import { setBackgroundByWidth } from "../setBackgroundImage";
+import { getBgCoverImg } from "../JS/publicFunction";
+import { setBackgroundByWidth } from "../JS/setBackgroundImage";
 import { Message } from "element-ui";
 export default {
   name: "register",

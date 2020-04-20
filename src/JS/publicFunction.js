@@ -147,7 +147,7 @@ export function getRandomNumber() {
     return Math.floor(Math.random() * 36);
 }
 
-const Resource = require('./config/Resource')
+const Resource = require('../config/Resource')
 export function getBgCoverImg(folder, fileName) {
     return `${Resource.serverRoot}${Resource.backgroundFile}${folder}/${fileName}`;
 }

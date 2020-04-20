@@ -1,5 +1,8 @@
 <template>
   <div id="detailBlog" class="background">
+    <div  class="cover-bg">
+      <img src="" alt="" id="detailBlog-bg">
+    </div>
     <div class="box">
       <div class="navheader flex-space-between">
         <h2>
@@ -173,8 +176,8 @@
 
 <script>
 import { Message } from "element-ui";
-import { handleItem, handleList, getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { handleItem, handleList, getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   name: "detailBlog",
   inject: ["reload"],
@@ -257,7 +260,7 @@ export default {
         "Mobile/Menu",
         `detailBlogPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("detailBlog", bigImageURL, smallImageURL);
+      setBackgroundByWidth("detailBlog-bg", bigImageURL, smallImageURL);
     });
   }
 };

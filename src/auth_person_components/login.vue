@@ -17,8 +17,8 @@
 
 <script>
 import { Message } from "element-ui";
-import { getVerificationCode, getBgCoverImg } from "../publicFunction";
-import { setBackgroundByWidth } from "../setBackgroundImage";
+import { getVerificationCode, getBgCoverImg } from "../JS/publicFunction";
+import { setBackgroundByWidth } from "../JS/setBackgroundImage";
 import jwtDecode from "jwt-decode";
 export default {
   name: "login",

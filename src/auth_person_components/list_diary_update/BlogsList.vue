@@ -32,7 +32,7 @@
 
 <script>
 import { Message } from "element-ui";
-import { handleList } from "../../publicFunction";
+import { handleList } from "../../JS/publicFunction";
 export default {
   inject: ["reload"],
   data() {

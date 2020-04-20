@@ -7,7 +7,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 //公共样式
-import './default.less'
+import './style_less/default.less'
+import './style_less/background.less'
 import '../src/style_less/header_footer.less'
 
 import mavonEditor from 'mavon-editor'

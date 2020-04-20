@@ -1,12 +1,19 @@
+
 #elHeader {
+  background: rgba(48, 43, 48, .6);
+  width: 100vw;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   overflow-x: hidden;
+  //position: fixed;
+  z-index: 1000;
 
   .logo {
     font-size: 1.1em;
     color: #ffffff;
     margin-left: 3em;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Bookman Old Style";
   }
 
   .navbar {
@@ -64,7 +71,7 @@
 
     .logo {
       width: 40vw;
-      height:75px;
+      height: 75px;
       background: rgba(48, 43, 48, .95);
       margin: 0;
       padding: 0;
@@ -72,6 +79,7 @@
       top: 0;
       left: 0;
       right: 60vw;
+      z-index: 1000;
     }
 
     .navbar {
@@ -82,6 +90,7 @@
       flex-direction: column;
       transition: top linear .5s;
       animation: menuShow linear .6s;
+      z-index: 1000;
 
       li {
         a {
@@ -102,8 +111,10 @@
       top: 0;
       right: 0;
       left: 40vw;
+z-index: 1000;
       .menu-btn {
         display: block;
+        z-index: 1000;
       }
     }
 
@@ -115,6 +126,7 @@
 #footer {
   height: 8vh;
   width: 100vw;
+  z-index: 1000;
 
   .beian {
     background-color: #222;

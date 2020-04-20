@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getBrowerType } from "../getLocaltionBrowser";
+import { getBrowerType } from "../JS/getLocaltionBrowser";
 import { Message } from "element-ui";
 export default {
   inject: ["reload"],

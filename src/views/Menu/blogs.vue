@@ -1,5 +1,9 @@
 <template>
   <div id="blogs" class="background">
+    <div class="cover-bg" >
+      <img src="" alt="" id="blogs-bg">
+    </div>
+    
     <div class="blogs">
       <ul class="flex-column allblog">
         <li v-for="(blog,index) in blogList" :key="index" class="flex-column-start">
@@ -105,8 +109,8 @@
 </template>
 <script>
 import { Message } from "element-ui";
-import { handleList, getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { handleList, getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   name: "blogs",
   data() {
@@ -203,14 +207,15 @@ export default {
         "Mobile/Menu",
         `blogsPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("blogs", bigImageURL, smallImageURL);
+      setBackgroundByWidth("blogs-bg", bigImageURL, smallImageURL);
     });
   }
 };
 </script>
 <style lang="less" scoped>
 #blogs {
-  width: 100vw;
+  /*flex: 0;*/
+  /*width: 100vw;*/
   display: flex;
   .blogs {
     flex: 4;

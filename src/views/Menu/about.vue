@@ -1,5 +1,8 @@
 <template>
   <div id="about" class="background">
+    <div class="cover-bg" >
+      <img src="" alt="" id="about-bg">
+    </div>
     <div class="aboutnav flex-column">
       <h1>About Me</h1>
       <h3>十年生死两茫茫，不思量，自难忘。千里孤坟，无处话凄凉。纵使相逢应不识，尘满面，鬓如霜。</h3>
@@ -36,8 +39,8 @@
 </template>
 
 <script>
-import { getBgCoverImg } from "../../publicFunction";
-import { setBackgroundByWidth } from "../../setBackgroundImage";
+import { getBgCoverImg } from "../../JS/publicFunction";
+import { setBackgroundByWidth } from "../../JS/setBackgroundImage";
 export default {
   name: "about",
   mounted() {
@@ -47,7 +50,7 @@ export default {
         "Mobile/Menu",
         `aboutPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("about", bigImageURL, smallImageURL);
+      setBackgroundByWidth("about-bg", bigImageURL, smallImageURL);
     });
   }
 };
