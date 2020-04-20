@@ -1,6 +1,6 @@
 <template>
     <div id="elHeader" class="flex-vertical">
-        <ul class="navbar flex-vertical" v-if="!menuVisiavle">
+        <ul class="navbar flex-vertical" v-if="menuVisiavle">
             <li v-for="(item,index) in Menu" :key="index" class="flex-vertical">
                 <router-link
                         :to="item.href"
@@ -53,7 +53,7 @@
         data() {
             return {
                 isLogin: false,
-                menuVisiavle: false,
+                menuVisiavle: true,
                 Menu: [
                     {
                         title: "首页",
@@ -136,6 +136,12 @@
         },
         created() {
             this.isQQ_Login();
+
+        },
+        mounted() {
+            let width = document.body.offsetWidth;
+            if(width<500)this.menuVisiavle=false;
+            
         }
     };
 </script>
