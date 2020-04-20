@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "canvas-nest.js": "^2.0.4",
     "core-js": "^3.6.4",
     "element-ui": "^2.13.1",
     "jsonp": "^0.2.1",
