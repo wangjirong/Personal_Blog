@@ -141,7 +141,7 @@
         mounted() {
             let width = document.body.offsetWidth;
             if(width<500)this.menuVisiavle=false;
-            
+
         }
     };
 </script>

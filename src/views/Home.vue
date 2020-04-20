@@ -142,6 +142,7 @@ export default {
 #home {
   #cover {
     transition: all 2s ease-in !important;
+
     #toBottom {
       position: absolute;
       width: 0.4rem;

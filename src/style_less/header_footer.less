@@ -1,5 +1,6 @@
 #elHeader {
   justify-content: space-between;
+  overflow: hidden;
   .logo {
     font-size: 0.2rem;
     color: #fff;
@@ -69,6 +70,7 @@
       margin: 5em 0 0 0;
       flex-direction: column;
       transition: top linear .5s;
+      animation: menuShow linear .6s;
 
       li {
         a {
@@ -88,7 +90,7 @@
       background: rgba(48,43,48,.95);
       height: 5em;
       width: 100vw;
-      padding-left: 30%;
+      padding-left: 25%;
       .menu-btn{
         display: block;
       }
@@ -115,5 +117,14 @@
     span {
       cursor: pointer;
     }
+  }
+}
+
+@keyframes menuShow {
+  from{
+    margin-top: -10em;
+  }
+  to{
+    margin-top: 5em;
   }
 }
