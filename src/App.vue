@@ -1,10 +1,16 @@
 <template>
   <div id="app">
+    <VueCanvasNest :config="{color:'0,255,255', count: 100}" :el="'#app'"></VueCanvasNest>
+    <VueCanvasNest :config="{color:'255,0,255', count: 100}" :el="'#app'"></VueCanvasNest>
+    <VueCanvasNest :config="{color:'255,255,0', count: 100}" :el="'#app'"></VueCanvasNest>
     <router-view v-if="isRouterAlive" />
   </div>
 </template>
 <script>
 export default {
+  components:{
+    VueCanvasNest:()=>import('vue-canvas-nest')
+  },
   provide() {
     return {
       reload: this.reload

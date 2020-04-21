@@ -15,7 +15,6 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
 import BaiduMap from 'vue-baidu-map'
-import CanvasNextJS from 'canvas-nest.js'
 
 import axios from './axios'
 Vue.prototype.$axios = axios
@@ -28,12 +27,6 @@ Vue.use(BaiduMap, {
 
 Vue.config.productionTip = false
 
-const config = {
-  color: '255,0,0',
-  count: 200,
-  zIndex:100
-};
-const cnj = new CanvasNextJS(document.getElementById("app"),config);
 
 new Vue({
   router,
