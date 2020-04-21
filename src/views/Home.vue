@@ -1,7 +1,7 @@
 <template>
     <div id="home">
         <div class="cover cover-size background flex-column">
-            <img src="" alt="" id="cover">
+            <img src="" alt="" id="cover" style="filter: alpha(opacity=0)">
             <a href="#article" id="toBottom">
                 <i class="el-icon-bottom"></i>
             </a>

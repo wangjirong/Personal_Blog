@@ -18,6 +18,7 @@ export function setbackground(id, imgURL) {
 
 export function setImageSrc(id, imgURL) {
     const img = document.getElementById(id);
+
     img.setAttribute("src", imgURL)
 
 }
