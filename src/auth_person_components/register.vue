@@ -1,5 +1,8 @@
 <template>
   <div id="register" class="background cover-size fixed">
+    <div class="cover-bg" >
+      <img src="" alt="" id="register-bg">
+    </div>
     <ul class="container flex-just-column">
       <li>
         <input type="text" placeholder="请输入用户名" v-model="manager.userName" />
@@ -117,13 +120,14 @@ export default {
         "Mobile/Manage",
         `registerPage_small_bg_img.jpg`
       );
-      setBackgroundByWidth("register", bigImageURL, smallImageURL);
+      setBackgroundByWidth("register-bg", bigImageURL, smallImageURL);
     });
   }
 };
 </script>
 <style lang="less" scoped>
 #register {
+  overflow-y: hidden;
   ul.container {
     width: 30%;
     margin: 1.5rem auto;

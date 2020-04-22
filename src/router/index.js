@@ -203,8 +203,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.meta) {
+    if (to.meta)
         document.title = to.meta.title;
+    if (to.meta.content) {
         let head = document.querySelector('head');
         let keywordsEle = document.createElement('meta');
         keywordsEle.name = "keywords";
@@ -216,9 +217,9 @@ router.beforeEach((to, from, next) => {
 
         head.appendChild(keywordsEle);
         head.appendChild(descriptionEle);
-
     }
-    const token = sessionStorage.eleToken;
+    // const token = document.cookie.replace(/(?:(?:^|.*;\s*)_cir_ve_\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    const token = sessionStorage.getItem('eleToken');
     if (token) next();
     else {
         if (to.matched.some(record => record.meta.requireAuth)) {
