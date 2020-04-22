@@ -5,7 +5,7 @@ import {
     Message
 } from 'element-ui'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     //公共组件，所有人均可访问
@@ -14,7 +14,11 @@ const routes = [
         name: 'Home',
         component: Home,
         meta: {
-            title: "Eric's Blog"
+            title: "故相思，自难忘！",
+            content: {
+                keywords: "Eric-Blog,故相思，自难忘！",
+                description: "故相思，自难忘!"
+            }
         }
     },
     {
@@ -23,14 +27,22 @@ const routes = [
         component: () => import('../views/Menu/Main'),
         redirect: '/menu/blogs',
         meta: {
-            title: 'Menu'
+            title: 'Eric-文章',
+            content: {
+                keywords: "Eric-Blog,故相思，自难忘!,文章列表！",
+                description: "故相思，自难忘!"
+            }
         },
         children: [{
             path: '/menu/blogs',
             name: 'Blog',
             component: () => import('../views/Menu/blogs'),
             meta: {
-                title: '博客'
+                title: 'Eric-文章列表',
+                content: {
+                    keywords: "Eric-Blog,故相思，自难忘！",
+                    description: "Eric-文章列表"
+                }
             }
         },
             {
@@ -38,21 +50,33 @@ const routes = [
                 name: 'DetailBlog',
                 component: () => import('../views/Menu/detailBlog.vue'),
                 meta: {
-                    title: '博客详情页面'
+                    title: 'Eric-文章详情',
+                    content: {
+                        keywords: "Eric-Blog,故相思，自难忘！",
+                        description: "Eric-文章详情"
+                    }
                 }
             }, {
                 path: '/menu/leaveMessage',
                 name: 'LeaveMessage',
                 component: () => import('../views/Menu/leaveMessage.vue'),
                 meta: {
-                    title: '留言'
+                    title: 'Eric-留言',
+                    content: {
+                        keywords: "Eric-Blog,故相思，自难忘！,留言！",
+                        description: "Eric-给我留言！"
+                    }
                 }
             }, {
                 path: '/menu/about',
                 name: 'About',
                 component: () => import('../views/Menu/about.vue'),
                 meta: {
-                    title: '关于 Eric'
+                    title: 'Eric-About',
+                    content: {
+                        keywords: "Eric-Blog,故相思，自难忘！,关于！",
+                        description: "Eric-about"
+                    }
                 }
             },
             {
@@ -60,7 +84,11 @@ const routes = [
                 name: 'OtherLink',
                 component: () => import('../views/Menu/otherLink.vue'),
                 meta: {
-                    title: '友情链接'
+                    title: 'Eric-友链',
+                    content: {
+                        keywords: "Eric-Blog,故相思，自难忘！,友链！",
+                        description: "Eric-友链"
+                    }
                 }
             },
             {
@@ -68,7 +96,11 @@ const routes = [
                 name: 'Diary',
                 component: () => import('../views/Menu/diary.vue'),
                 meta: {
-                    title: '日记'
+                    title: 'Eric-日记',
+                    content: {
+                        keywords: "Eric-Blog,故相思，自难忘！,日记！",
+                        description: "Eric-日记"
+                    }
                 }
             },
         ]
@@ -162,17 +194,28 @@ const routes = [
     //   path: '*',
     //   redirect: '/404NotFound'
     // }
-]
+];
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
-})
+});
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.title) {
-      document.title = to.meta.title;
+    if (to.meta) {
+        document.title = to.meta.title;
+        let head = document.querySelector('head');
+        let keywordsEle = document.createElement('meta');
+        keywordsEle.name = "keywords";
+        keywordsEle.content = to.meta.content.keywords;
+
+        let descriptionEle = document.createElement('meta');
+        descriptionEle.name = "description";
+        descriptionEle.content = to.meta.content.description;
+
+        head.appendChild(keywordsEle);
+        head.appendChild(descriptionEle);
 
     }
     const token = sessionStorage.eleToken;
@@ -189,5 +232,9 @@ router.beforeEach((to, from, next) => {
         }
         next();
     }
-})
+});
+
+// router.beforeMount((to,from,next)=>{
+//
+// })
 export default router
