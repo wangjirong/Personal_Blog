@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <VueCanvasNest :config="{color:'0,255,255', count: 200}" :el="'#app'"></VueCanvasNest>
-    <VueCanvasNest :config="{color:'255,0,255', count: 200}" :el="'#app'"></VueCanvasNest>
-    <VueCanvasNest :config="{color:'255,255,0', count: 200}" :el="'#app'"></VueCanvasNest>
-    <VueCanvasNest :config="{color:'128,128,0', count: 200}" :el="'#app'"></VueCanvasNest>
-    <VueCanvasNest :config="{color:'0,120,128', count: 200}" :el="'#app'"></VueCanvasNest>
-    <VueCanvasNest :config="{color:'128,0,128', count: 200}" :el="'#app'"></VueCanvasNest>
+<!--    <VueCanvasNest :config="{color:'0,255,255', count: 200}" :el="'#app'"></VueCanvasNest>-->
+<!--    <VueCanvasNest :config="{color:'255,0,255', count: 200}" :el="'#app'"></VueCanvasNest>-->
+<!--    <VueCanvasNest :config="{color:'255,255,0', count: 200}" :el="'#app'"></VueCanvasNest>-->
+<!--    <VueCanvasNest :config="{color:'128,128,0', count: 200}" :el="'#app'"></VueCanvasNest>-->
+<!--    <VueCanvasNest :config="{color:'0,120,128', count: 200}" :el="'#app'"></VueCanvasNest>-->
+<!--    <VueCanvasNest :config="{color:'128,0,128', count: 200}" :el="'#app'"></VueCanvasNest>-->
     <router-view v-if="isRouterAlive" />
   </div>
 </template>
