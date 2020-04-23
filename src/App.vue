@@ -6,13 +6,15 @@
         <!--    <VueCanvasNest :config="{color:'128,128,0', count: 200}" :el="'#app'"></VueCanvasNest>-->
         <!--    <VueCanvasNest :config="{color:'0,120,128', count: 200}" :el="'#app'"></VueCanvasNest>-->
         <!--    <VueCanvasNest :config="{color:'128,0,128', count: 200}" :el="'#app'"></VueCanvasNest>-->
+
         <router-view v-if="isRouterAlive"/>
+        
     </div>
 </template>
 <script>
     export default {
         components: {
-            VueCanvasNest: () => import('vue-canvas-nest')
+            VueCanvasNest: () => import('vue-canvas-nest'),
         },
         provide() {
             return {
@@ -52,3 +54,4 @@
         }
     };
 </script>
+

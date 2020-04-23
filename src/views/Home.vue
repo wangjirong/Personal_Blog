@@ -2,6 +2,7 @@
     <div id="home">
         <div class="cover cover-size background flex-column">
             <img src="" alt="" id="cover" style="filter: alpha(opacity=0)">
+
             <a href="#article" id="toBottom">
                 <i class="el-icon-bottom"></i>
             </a>
@@ -10,9 +11,7 @@
                 <p>十年生死两茫茫，不思量，自难忘。</p>
                 <a href="/menu/blogs">进入 Blog</a>
             </div>
-            <aplayer autoplay
-                     :music="music"
-            />
+
         </div>
         <div id="article" class="flex-column">
             <div class="header flex-column">
@@ -89,18 +88,10 @@
                 isShow: false,
                 BlogList: [],
                 runningTime: {},
-                music: {
-                    title: 'secret base~君がくれたもの~',
-                    artist: 'Silent Siren',
-                    src: 'https://erics-bucket.oss-cn-beijing.aliyuncs.com/Home_Bg_Music/Delos%20-%20%E6%81%8B%E9%9B%AA.mp3',
-                    pic: 'https://erics-bucket.oss-cn-beijing.aliyuncs.com/Home_Bg_Music/pic/avatar1.jpg'
-                }
-
             };
         },
         components: {
             elFooter: () => import("../components/footer"),
-            aplayer: () => import('vue-aplayer')
         },
         mounted() {
             this.$nextTick(() => {
@@ -151,7 +142,7 @@
         }
     };
 </script>
-<style lang="less" scoped>
+<style lang="less">
     #home {
         .cover {
             img#cover {
@@ -219,12 +210,7 @@
                 }
             }
 
-            .aplayer{
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                z-index: 10000;
-            }
+
         }
 
         #article {
