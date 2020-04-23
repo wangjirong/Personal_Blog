@@ -1,6 +1,6 @@
 <template>
     <!-- 指定 lrcType 为 0，表示禁用歌词 -->
-    <aplayer :audio="audio" :lrcType="0" />
+    <aplayer :audio="audio" :lrcType="3" ref="aplayer"  />
 </template>
 
 <script>

@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </div>
-            <aplayer ref="aplayer"></aplayer>
+            <aplayer @hook:mounted="getAudio" ref="aplayer"></aplayer>
             <div class="expandRead flex-column-left">
                 <span class="expandTitle">扩展阅读</span>
                 <div class="expandItem flex-vertical-start" v-for="item in expandReadList" :key="item.id">
@@ -179,6 +179,7 @@
     import {Message} from "element-ui";
     import {handleItem, handleList, getBgCoverImg} from "../../JS/publicFunction";
     import {setBackgroundByWidth} from "../../JS/setBackgroundImage";
+    import Aplayer from '@moefe/vue-aplayer'
 
     export default {
         name: "detailBlog",
@@ -193,8 +194,8 @@
                 myComment: {
                     userId: this.$store.state.user.id,
                     text: "",
-
                 },
+                audio: this.$refs.aplayer,
                 comments: [],
                 expandReadList: [
                     {
@@ -224,10 +225,10 @@
                 this.blog = handleItem(res.data, res.data.date);
             },
             playMusic() {
-                this.$refs.aplayer.play();
+                this.audio.play();
             },
             pauseMusic() {
-                this.$refs.aplayer.pause();
+                this.audio.pause();
             },
             async sendComment() {
                 if (!this.myComment.userId) Message.error("请先登录");
@@ -246,6 +247,10 @@
                     `/api/comment/getAllComments?article_id=${this._id}`
                 );
                 this.comments = handleList(res.data);
+            },
+            getAudio() {
+                this.audio = this.$refs.aplayer;
+                console.log(this.audio)
             }
         },
         created() {
@@ -263,9 +268,12 @@
                     `detailBlogPage_small_bg_img.jpg`
                 );
                 setBackgroundByWidth("detailBlog-bg", bigImageURL, smallImageURL);
-                this.$refs.aplayer.showLrc();
+                // this.$refs.aplayer.showLrc();
+
             });
-        }
+
+        },
+
     };
 </script>
 <style lang="less" scoped>
