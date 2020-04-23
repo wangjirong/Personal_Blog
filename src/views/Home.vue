@@ -10,6 +10,9 @@
                 <p>十年生死两茫茫，不思量，自难忘。</p>
                 <a href="/menu/blogs">进入 Blog</a>
             </div>
+            <aplayer autoplay
+                     :music="music"
+            />
         </div>
         <div id="article" class="flex-column">
             <div class="header flex-column">
@@ -85,11 +88,19 @@
             return {
                 isShow: false,
                 BlogList: [],
-                runningTime: {}
+                runningTime: {},
+                music: {
+                    title: 'secret base~君がくれたもの~',
+                    artist: 'Silent Siren',
+                    src: 'https://erics-bucket.oss-cn-beijing.aliyuncs.com/Home_Bg_Music/Delos%20-%20%E6%81%8B%E9%9B%AA.mp3',
+                    pic: 'https://erics-bucket.oss-cn-beijing.aliyuncs.com/Home_Bg_Music/pic/avatar1.jpg'
+                }
+
             };
         },
         components: {
-            elFooter: () => import("../components/footer")
+            elFooter: () => import("../components/footer"),
+            aplayer: () => import('vue-aplayer')
         },
         mounted() {
             this.$nextTick(() => {
@@ -206,6 +217,13 @@
                         color: darkred;
                     }
                 }
+            }
+
+            .aplayer{
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                z-index: 10000;
             }
         }
 

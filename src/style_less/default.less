@@ -1,137 +1,148 @@
 * {
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    box-sizing: content-box;
-    transition: .5s linear;
-    transition: linear .5s;
-    font-size: .15rem;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: content-box;
+  transition: .5s linear;
+  transition: linear .5s;
+  font-size: .15rem;
+   -webkit-font-smoothing:antialiased ;
+}
+
+body {
+  overflow: hidden;
+  transition: all 1000ms ease;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  border: 1px solid #CCC !important;
 }
 
 /* a:hover{
     text-decoration: underline;
 } */
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 body * {
-    transition: ease-in-out 500ms;
-    font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Arial", "Verdana", "Microsoft Yahei", sans-serif;
-    transition-property: background, color, border, width, height, margin, padding, top, right, bottom, left, transform, opacity, visibility, zoom;
+  transition: ease-in-out 500ms;
+  font-family: "PingFang SC", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Arial", "Verdana", "Microsoft Yahei", sans-serif;
+  transition-property: background, color, border, width, height, margin, padding, top, right, bottom, left, transform, opacity, visibility, zoom;
 }
 
 .flex-justColumn {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-column-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-just-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .font-center,
 .flex-vertical {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .flex-column-start {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .flex-vertical-start {
-    display: flex;
-    align-items: flex-start;
-    // vertical-align: middle;
+  display: flex;
+  align-items: flex-start;
+  // vertical-align: middle;
 }
 
 .flex-spaceBetween,
 .flex-space-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .flex-vertical-start-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .avatar {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .userName {
-    color: #01aaed;
-    font-size: 1.1em;
+  color: #01aaed;
+  font-size: 1.1em;
 }
-
 
 
 .color-black {
-    color: #000;
+  color: #000;
 }
 
 .background {
-    background-repeat: no-repeat !important;
-    background-size: 100% 100% !important;
-    background-position: center center !important;
-    background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
 }
 
 .fixed {
-    position: fixed;
+  position: fixed;
 }
 
 .cover-size {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 //超出不换行，显示...
 .text-no-wrap {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
