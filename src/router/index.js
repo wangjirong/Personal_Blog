@@ -169,6 +169,15 @@ const routes = [
                     requireAuth: true
                 }
             },
+            {
+                path: '/auth_personal/manage/addSong',
+                name: 'AddSong',
+                component: () => import('../auth_person_components/addSong'),
+                meta: {
+                    title: '添加歌曲',
+                    requireAuth: true
+                }
+            }
 
         ]
     },

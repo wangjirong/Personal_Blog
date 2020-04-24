@@ -17,6 +17,9 @@
                 <li>
                     <router-link to="/auth_personal/manage/diary">日记</router-link>
                 </li>
+                <li>
+                    <router-link to="/auth_personal/manage/addSong">上传歌曲</router-link>
+                </li>
             </ul>
         </div>
         <router-view class="right-eara"></router-view>
